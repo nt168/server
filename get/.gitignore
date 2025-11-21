@@ -1,0 +1,4 @@
+get_client
+*.o
+tests/fake_server
+tests/tmp*

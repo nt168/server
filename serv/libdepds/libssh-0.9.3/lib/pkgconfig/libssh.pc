@@ -1,0 +1,6 @@
+Name: libssh
+Description: The SSH Library
+Version: 0.9.3
+Libs: -L/home/nt/libssh-0.9.3/install/lib -lssh
+Cflags: -I/home/nt/libssh-0.9.3/install/include
+
