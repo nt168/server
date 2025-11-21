@@ -1,0 +1,22 @@
+{
+	"数据流量 histogram": {
+		"N(${node_id})E(${pmu_id})C(${ctrler_id})_WR_FLOW_RT": "0 GBps",
+		"N(${node_id})E(${pmu_id})C(${ctrler_id})_RD_FLOW_RT": "0 GBps"
+	},
+	"事务流量 histogram": {
+		"N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_ar_RT": "0 GTps",
+		"N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_r_last_RT": "0 GTps",
+		"N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_r_err_RT": "0 GTps",
+		"N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_r_full_RT": "0 GTps",
+		"N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_aw_RT": "0 GTps",
+		"N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_w_last_RT": "0 GTps",
+		"N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_w_err_RT": "0 GTps",
+		"N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_b_RT": "0 GTps",
+		"N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_delay_rd_RT": "0 GTps",
+		"N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_delay_wr_RT": "0 GTps"
+	},
+	"读写延迟 histogram": {
+		"N(${node_id})E(${pmu_id})C(${ctrler_id})_WR_DELAY": "0",
+		"N(${node_id})E(${pmu_id})C(${ctrler_id})_RD_DELAY": "0"
+	}
+}

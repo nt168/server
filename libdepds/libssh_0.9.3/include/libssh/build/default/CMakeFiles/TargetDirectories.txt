@@ -1,0 +1,6 @@
+/home/nt/phyTune_version/phyTune-v1.6.0/phyTuneX/server/libdepds/libssh_0.9.3/include/libssh/build/default/CMakeFiles/install/strip.dir
+/home/nt/phyTune_version/phyTune-v1.6.0/phyTuneX/server/libdepds/libssh_0.9.3/include/libssh/build/default/CMakeFiles/install/local.dir
+/home/nt/phyTune_version/phyTune-v1.6.0/phyTuneX/server/libdepds/libssh_0.9.3/include/libssh/build/default/CMakeFiles/install.dir
+/home/nt/phyTune_version/phyTune-v1.6.0/phyTuneX/server/libdepds/libssh_0.9.3/include/libssh/build/default/CMakeFiles/list_install_components.dir
+/home/nt/phyTune_version/phyTune-v1.6.0/phyTuneX/server/libdepds/libssh_0.9.3/include/libssh/build/default/CMakeFiles/rebuild_cache.dir
+/home/nt/phyTune_version/phyTune-v1.6.0/phyTuneX/server/libdepds/libssh_0.9.3/include/libssh/build/default/CMakeFiles/edit_cache.dir

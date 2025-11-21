@@ -1,0 +1,39 @@
+===========================================
+Node($node_id)PEU(${pmu_id})Ctrler(${ctrler_id}) Effectiveness:
+===========================================
+phyt${node_id}_peu_pmu${pmu_id}/cycles,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_peu_pmu${pmu_id}/ar,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_peu_pmu${pmu_id}/r_last,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_peu_pmu${pmu_id}/r_err,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_peu_pmu${pmu_id}/r_full,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_peu_pmu${pmu_id}/aw,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_peu_pmu${pmu_id}/w_last,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_peu_pmu${pmu_id}/w_err,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_peu_pmu${pmu_id}/b,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_peu_pmu${pmu_id}/w_data,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_peu_pmu${pmu_id}/delay_rd,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_peu_pmu${pmu_id}/rd_max,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_peu_pmu${pmu_id}/rd_min,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_peu_pmu${pmu_id}/rdelay_time,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_peu_pmu${pmu_id}/delay_wr,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_peu_pmu${pmu_id}/wr_max,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_peu_pmu${pmu_id}/wr_min,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_peu_pmu${pmu_id}/wdelay_time,ctrler=0x${ctrler_id}/: 0
+===========================================
+PEU_Freq: ${peu_freq_in_GHz} GHz
+PEU_DATA_WIDTH: ${PEU_DATA_WIDTH}
+N(${node_id})E(${pmu_id})C(${ctrler_id})_WR_FLOW_RT: 0 GBps
+N(${node_id})E(${pmu_id})C(${ctrler_id})_RD_FLOW_RT: 0 GBps
+N(${node_id})E(${pmu_id})C(${ctrler_id})_WR_DELAY: 0
+N(${node_id})E(${pmu_id})C(${ctrler_id})_RD_DELAY: 0
+N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_ar_RT: 0 GTps
+N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_r_last_RT: 0 GTps
+N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_r_err_RT: 0 GTps
+N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_r_full_RT: 0 GTps
+N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_aw_RT: 0 GTps
+N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_w_last_RT: 0 GTps
+N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_w_err_RT: 0 GTps
+N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_b_RT: 0 GTps
+N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_delay_rd_RT: 0 GTps
+N(${node_id})E(${pmu_id})C(${ctrler_id})_TRANS_delay_wr_RT: 0 GTps
+

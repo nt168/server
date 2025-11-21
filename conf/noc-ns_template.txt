@@ -1,0 +1,268 @@
+NOC Analysis for PMUs such as xp|hnf|sbsx|hni|rnid.
+
+===========================================
+XP(Mesh Flow - dat) Effectiveness:
+===========================================
+arm_cmn/dtc_cycles/: 785826627
+arm_cmn/mxp_n_dat_txflit_valid/: 89503617
+arm_cmn/mxp_s_dat_txflit_valid/: 59037942
+arm_cmn/mxp_w_dat_txflit_valid/: 140645119
+arm_cmn/mxp_e_dat_txflit_valid/: 148346224
+arm_cmn/mxp_n_dat_txflit_stall/: 30
+arm_cmn/mxp_s_dat_txflit_stall/: 2037
+arm_cmn/mxp_w_dat_txflit_stall/: 51
+arm_cmn/mxp_e_dat_txflit_stall/: 162
+arm_cmn/mxp_n_dat_partial_dat_flit/: 0
+arm_cmn/mxp_s_dat_partial_dat_flit/: 0
+arm_cmn/mxp_w_dat_partial_dat_flit/: 0
+arm_cmn/mxp_e_dat_partial_dat_flit/: 0
+===========================================
+SUM_dat_txflit_valid: 437532902
+SUM_dat_txflit_stall: 2280
+SUM_dat_partial_dat_flit: 0
+XP(dat)_VALID_FLOW_RT: 471.90 Gbps
+XP(dat)_STALL_FLOW_RT: 0.00 Gbps
+XP(dat)_PARTIAL_FLOW_RT: 0.00 Gbps
+
+===========================================
+XP(Device Flow - dat) Effectiveness:
+===========================================
+arm_cmn/dtc_cycles/: 783932087
+arm_cmn/mxp_p0_dat_txflit_valid/: 47842633
+arm_cmn/mxp_p1_dat_txflit_valid/: 52038749
+arm_cmn/mxp_p0_dat_txflit_stall/: 6
+arm_cmn/mxp_p1_dat_txflit_stall/: 0
+arm_cmn/mxp_p0_dat_partial_dat_flit/: 0
+arm_cmn/mxp_p1_dat_partial_dat_flit/: 0
+===========================================
+XP(dat)_P0_VALID_FLOW_RT: 51.72 Gbps
+XP(dat)_P1_VALID_FLOW_RT: 56.26 Gbps
+XP(dat)_P0_STALL_FLOW_RT: 0.00 Gbps
+XP(dat)_P1_STALL_FLOW_RT: 0.00 Gbps
+XP(dat)_P0_PARTIAL_FLOW_RT: 0.00 Gbps
+XP(dat)_P1_PARTIAL_FLOW_RT: 0.00 Gbps
+
+===========================================
+XP(Mesh Flow - req) Effectiveness:
+===========================================
+arm_cmn/dtc_cycles/: 943710347
+arm_cmn/mxp_n_req_txflit_valid/: 14643346
+arm_cmn/mxp_s_req_txflit_valid/: 41769493
+arm_cmn/mxp_w_req_txflit_valid/: 155753744
+arm_cmn/mxp_e_req_txflit_valid/: 26824617
+arm_cmn/mxp_n_req_txflit_stall/: 643
+arm_cmn/mxp_s_req_txflit_stall/: 0
+arm_cmn/mxp_w_req_txflit_stall/: 0
+arm_cmn/mxp_e_req_txflit_stall/: 3
+arm_cmn/mxp_n_req_partial_dat_flit/: 0
+arm_cmn/mxp_s_req_partial_dat_flit/: 0
+arm_cmn/mxp_w_req_partial_dat_flit/: 0
+arm_cmn/mxp_e_req_partial_dat_flit/: 0
+===========================================
+SUM_req_txflit_valid: 238991200
+SUM_req_txflit_stall: 646
+SUM_req_partial_dat_flit: 0
+XP(req)_VALID_FLOW_RT: 214.64 Gbps
+XP(req)_STALL_FLOW_RT: 0.00 Gbps
+XP(req)_PARTIAL_FLOW_RT: 0.00 Gbps
+
+===========================================
+XP(Device Flow - req) Effectiveness:
+===========================================
+arm_cmn/dtc_cycles/: 794284890
+arm_cmn/mxp_p0_req_txflit_valid/: 24001102
+arm_cmn/mxp_p1_req_txflit_valid/: 47573988
+arm_cmn/mxp_p0_req_txflit_stall/: 0
+arm_cmn/mxp_p1_req_txflit_stall/: 0
+arm_cmn/mxp_p0_req_partial_dat_flit/: 0
+arm_cmn/mxp_p1_req_partial_dat_flit/: 0
+===========================================
+XP(req)_P0_VALID_FLOW_RT: 25.61 Gbps
+XP(req)_P1_VALID_FLOW_RT: 50.76 Gbps
+XP(req)_P0_STALL_FLOW_RT: 0.00 Gbps
+XP(req)_P1_STALL_FLOW_RT: 0.00 Gbps
+XP(req)_P0_PARTIAL_FLOW_RT: 0.00 Gbps
+XP(req)_P1_PARTIAL_FLOW_RT: 0.00 Gbps
+
+===========================================
+XP(Mesh Flow - rsp) Effectiveness:
+===========================================
+arm_cmn/dtc_cycles/: 983227920
+arm_cmn/mxp_n_rsp_txflit_valid/: 61477383
+arm_cmn/mxp_s_rsp_txflit_valid/: 34595496
+arm_cmn/mxp_w_rsp_txflit_valid/: 79795826
+arm_cmn/mxp_e_rsp_txflit_valid/: 73493134
+arm_cmn/mxp_n_rsp_txflit_stall/: 2054
+arm_cmn/mxp_s_rsp_txflit_stall/: 91
+arm_cmn/mxp_w_rsp_txflit_stall/: 3
+arm_cmn/mxp_e_rsp_txflit_stall/: 14
+arm_cmn/mxp_n_rsp_partial_dat_flit/: 0
+arm_cmn/mxp_s_rsp_partial_dat_flit/: 0
+arm_cmn/mxp_w_rsp_partial_dat_flit/: 0
+arm_cmn/mxp_e_rsp_partial_dat_flit/: 0
+===========================================
+SUM_rsp_txflit_valid: 249361839
+SUM_rsp_txflit_stall: 2162
+SUM_rsp_partial_dat_flit: 0
+XP(rsp)_VALID_FLOW_RT: 214.95 Gbps
+XP(rsp)_STALL_FLOW_RT: 0.00 Gbps
+XP(rsp)_PARTIAL_FLOW_RT: 0.00 Gbps
+
+===========================================
+XP(Device Flow - rsp) Effectiveness:
+===========================================
+arm_cmn/dtc_cycles/: 787201965
+arm_cmn/mxp_p0_rsp_txflit_valid/: 31541288
+arm_cmn/mxp_p1_rsp_txflit_valid/: 27359391
+arm_cmn/mxp_p0_rsp_txflit_stall/: 0
+arm_cmn/mxp_p1_rsp_txflit_stall/: 0
+arm_cmn/mxp_p0_rsp_partial_dat_flit/: 0
+arm_cmn/mxp_p1_rsp_partial_dat_flit/: 0
+===========================================
+XP(rsp)_P0_VALID_FLOW_RT: 33.96 Gbps
+XP(rsp)_P1_VALID_FLOW_RT: 29.45 Gbps
+XP(rsp)_P0_STALL_FLOW_RT: 0.00 Gbps
+XP(rsp)_P1_STALL_FLOW_RT: 0.00 Gbps
+XP(rsp)_P0_PARTIAL_FLOW_RT: 0.00 Gbps
+XP(rsp)_P1_PARTIAL_FLOW_RT: 0.00 Gbps
+
+===========================================
+XP(Mesh Flow - snp) Effectiveness:
+===========================================
+arm_cmn/dtc_cycles/: 973533571
+arm_cmn/mxp_n_snp_txflit_valid/: 51519
+arm_cmn/mxp_s_snp_txflit_valid/: 123364
+arm_cmn/mxp_w_snp_txflit_valid/: 128723
+arm_cmn/mxp_e_snp_txflit_valid/: 112859
+arm_cmn/mxp_n_snp_txflit_stall/: 43
+arm_cmn/mxp_s_snp_txflit_stall/: 295
+arm_cmn/mxp_w_snp_txflit_stall/: 2961
+arm_cmn/mxp_e_snp_txflit_stall/: 2644
+arm_cmn/mxp_n_snp_partial_dat_flit/: 0
+arm_cmn/mxp_s_snp_partial_dat_flit/: 0
+arm_cmn/mxp_w_snp_partial_dat_flit/: 0
+arm_cmn/mxp_e_snp_partial_dat_flit/: 0
+===========================================
+SUM_snp_txflit_valid: 416465
+SUM_snp_txflit_stall: 5943
+SUM_snp_partial_dat_flit: 0
+XP(snp)_VALID_FLOW_RT: 0.36 Gbps
+XP(snp)_STALL_FLOW_RT: 0.00 Gbps
+XP(snp)_PARTIAL_FLOW_RT: 0.00 Gbps
+
+===========================================
+XP(Device Flow - snp) Effectiveness:
+===========================================
+arm_cmn/dtc_cycles/: 774316913
+arm_cmn/mxp_p0_snp_txflit_valid/: 308822
+arm_cmn/mxp_p1_snp_txflit_valid/: 353400
+arm_cmn/mxp_p0_snp_txflit_stall/: 207242
+arm_cmn/mxp_p1_snp_txflit_stall/: 216046
+arm_cmn/mxp_p0_snp_partial_dat_flit/: 0
+arm_cmn/mxp_p1_snp_partial_dat_flit/: 0
+===========================================
+XP(snp)_P0_VALID_FLOW_RT: 0.33 Gbps
+XP(snp)_P1_VALID_FLOW_RT: 0.38 Gbps
+XP(snp)_P0_STALL_FLOW_RT: 0.22 Gbps
+XP(snp)_P1_STALL_FLOW_RT: 0.23 Gbps
+XP(snp)_P0_PARTIAL_FLOW_RT: 0.00 Gbps
+XP(snp)_P1_PARTIAL_FLOW_RT: 0.00 Gbps
+
+===========================================
+HNF(L3/SLC) Effectiveness:
+===========================================
+arm_cmn/dtc_cycles/: 817182095
+arm_cmn/hnf_slc_sf_cache_access/: 25069437
+arm_cmn/hnf_cache_miss/: 19747138
+===========================================
+[L3_MISS_RT]: 78.76%
+
+===========================================
+HNF(POCQ) Effectiveness:
+===========================================
+arm_cmn/dtc_cycles/: 813024009
+arm_cmn/hnf_pocq_retry/: 0
+arm_cmn/hnf_pocq_reqs_recvd/: 45905532
+===========================================
+[POCQ_RETRY_RT]: 0.00%
+
+===========================================
+HNF(SF) Effectiveness:
+===========================================
+arm_cmn/dtc_cycles/: 805983227
+arm_cmn/hnf_snp_sent/: 70232
+arm_cmn/hnf_brd_snoops_sent/: 39643
+===========================================
+[DATA_SHARE_RT]: 56.44%
+
+===========================================
+HNF(MC) Effectiveness:
+===========================================
+arm_cmn/dtc_cycles/: 992442493
+arm_cmn/hnf_mc_reqs/: 20264900
+arm_cmn/hnf_mc_retries/: 6
+===========================================
+[MC_RETRY_RT]: 0.00%
+
+===========================================
+HNF(QoS) Effectiveness:
+===========================================
+arm_cmn/dtc_cycles/: 788789914
+arm_cmn/hnf_qos_hh_retry/: 0
+===========================================
+
+===========================================
+HNI(BtlNeck) Effectiveness:
+===========================================
+arm_cmn/dtc_cycles/: 783520401
+arm_cmn/hni_nonpcie_serialization/: 0
+arm_cmn/hni_pcie_serialization/: 0
+arm_cmn/hni_arvalid_no_arready/: 49
+arm_cmn/hni_awvalid_no_awready/: 14527356
+arm_cmn/hni_wvalid_no_wready/: 0
+arm_cmn/hni_arready_no_arvalid/: 6275349558
+arm_cmn/hni_awready_no_awvalid/: 6256403857
+arm_cmn/hni_rrt_rd_occ_cnt_ovfl/: 1078
+arm_cmn/hni_rrt_wr_occ_cnt_ovfl/: 11307
+arm_cmn/hni_rdt_rd_occ_cnt_ovfl/: 1937675
+arm_cmn/hni_rdt_wr_occ_cnt_ovfl/: 61548
+arm_cmn/hni_wdb_occ_cnt_ovfl/: 10987
+===========================================
+
+===========================================
+RNID(Flow) Effectiveness:
+===========================================
+arm_cmn/dtc_cycles/: 804789079
+arm_cmn/rnid_s0_rdata_beats/: 1252677
+arm_cmn/rnid_s1_rdata_beats/: 0
+arm_cmn/rnid_s2_rdata_beats/: 0
+arm_cmn/rnid_s0_wdata_beats/: 824120
+arm_cmn/rnid_s1_wdata_beats/: 192477
+arm_cmn/rnid_s2_wdata_beats/: 0
+arm_cmn/rnid_rxdat_flits/: 1249581
+arm_cmn/rnid_txdat_flits/: 1013018
+===========================================
+Mesh_Freq: 1.65 GHz
+DataFlitSize: 512
+AXIDataBeatSize : 512
+RNI_S0_RD_FLOW_RT: 1.31 Gbps
+RNI_S1_RD_FLOW_RT: 0.00 Gbps
+RNI_S2_RD_FLOW_RT: 0.00 Gbps
+RNI_S0_WR_FLOW_RT: 0.86 Gbps
+RNI_S1_WR_FLOW_RT: 0.20 Gbps
+RNI_S2_WR_FLOW_RT: 0.00 Gbps
+RNI_RXDATA_FLOW_RT: 1.31 Gbps
+RNI_TXDATA_FLOW_RT: 1.06 Gbps
+
+===========================================
+RNID(BtlNeck) Effectiveness:
+===========================================
+arm_cmn/dtc_cycles/: 815748626
+arm_cmn/rnid_txreq_flits_replayed/: 0
+arm_cmn/rnid_txreq_flits_retried/: 10954
+arm_cmn/rnid_txreq_flits_total/: 2199476
+arm_cmn/rnid_rrt_occ_ovfl/: 41274
+arm_cmn/rnid_wrt_occ_ovfl/: 87482
+===========================================
+[Req_Retry_RT]: 0.49%
+

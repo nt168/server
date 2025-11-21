@@ -1,0 +1,104 @@
+{
+	"Cache histogram": {
+		"CACHE(L1) Effectiveness": {
+			"inst_retired": "1263631",
+			"l1i_cache": "475137",
+			"l1i_cache_refill": "24488",
+			"l1d_cache": "435079",
+			"l1d_cache_refill": "13711"
+		},
+		"CACHE(L2&LL) Effectiveness": {
+			"inst_retired": "1253396",
+			"l2d_cache": "74983",
+			"l2d_cache_refill": "14794",
+			"ll_cache_rd": "21368",
+			"ll_cache_miss_rd": "18702"
+		}
+	},
+	"Branch histogram": {
+		"Branch Effectiveness": {
+			"inst_retired": "1252792",
+			"inst_spec": "1546804",
+			"br_mis_pred": "9699",
+			"br_pred": "257710",
+			"br_mis_pred_retired": "8566",
+			"br_retired": "242351"
+		}
+	},
+	"TLB histogram": {
+		"TLB(Walk) Effectiveness": {
+			"inst_retired": "1250981",
+			"l1i_tlb": "444961",
+			"l1d_tlb": "865746",
+			"dtlb_walk": "422",
+			"itlb_walk": "38"
+		},
+		"TLB(Refill&Err) Effectiveness": {
+			"l1d_tlb_refill": "3663",
+			"l1d_tlb": "820408",
+			"l2d_tlb_refill": "486",
+			"l2d_tlb": "4502"
+		}
+	},
+	"PKI histogram": {
+		"Branch Effectiveness": {
+			"[BR_MP_PKI_SPEC]": "6.27",
+			"[BR_MP_PKI]": "6.83"
+		},
+		"TLB(Walk) Effectiveness": {
+			"[ITLB_WALK_PKI]": ".03",
+			"[DTLB_WALK_PKI]": ".33"
+		},
+		"CACHE(L1) Effectiveness": {
+			"[L1I_REFILL_PKI]": "19.37",
+			"[L1D_REFILL_PKI]": "10.85"
+		},
+		"CACHE(L2&LL) Effectiveness": {
+			"[L2D_REFILL_PKI]": "11.80",
+			"[LL_MISS_PKI]": "14.92"
+		}
+	},
+	"MissRt histogram": {
+		"Branch Effectiveness": {
+			"[BR_MP_RT_SPEC]": "3.76%",
+			"[SPEC_FLUSH_RT]": "19.00%",
+			"[BR_MP_RT]": "3.53%"
+		},
+		"TLB(Walk) Effectiveness": {
+			"[L1ITLB_WALK_RT]": "0.00%",
+			"[L2DTLB_WALK_RT]": "0.04%"
+		},
+		"TLB(Refill&Err) Effectiveness": {
+			"[L1D_TLB_MS_RT]": "0.44%",
+			"[L2D_TLB_MS_RT]": "10.79%",
+			"[MEM_ERR_RT]": "0.00%"
+		},
+		"CACHE(L1) Effectiveness": {
+			"[L1I_REFILL_RT]": "5.15%",
+			"[L1D_REFILL_RT]": "3.15%"
+		},
+		"CACHE(L2&LL) Effectiveness": {
+			"[L2D_REFILL_RT]": "19.72%",
+			"[LL_MISS_RT]": "87.52%"
+		}
+	},
+	"Top PieDiagram": {
+		"Cycle Effectiveness": {
+			"[STALL_FTND_RT]": "23.65%",
+			"[STALL_BKND_RT]": "59.53%",
+			"[RETIRED_CYCLES]": "16.82%"
+		}
+	},
+	"InstMix PieDiagram": {
+		"Instructions(Compute) Effectiveness": {
+			"[DP_INST_PCT]": "49.42%",
+			"[ASE_INST_PCT]": "0.38%",
+			"[VFP_INST_PCT]": "0.00%",
+			"[CRYPTO_INST_PCT]": "0.00%"
+		},
+		"Instructions(Branch&LdSt) Effectiveness": {
+			"[BR_INST_PCT]": "18.34%",
+			"[LDST_INST_PCT]": "30.57%"
+		}
+	}
+}

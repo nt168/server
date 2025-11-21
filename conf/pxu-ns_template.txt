@@ -1,0 +1,38 @@
+Node($node_id)PXU(${pxu_id})Ctrler(${ctrler_id}) Effectiveness:
+===========================================
+phyt${node_id}_pxu${pxu_id}_pmu/cycles,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_pxu${pxu_id}_pmu/ar,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_pxu${pxu_id}_pmu/r_last,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_pxu${pxu_id}_pmu/r_err,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_pxu${pxu_id}_pmu/r_full,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_pxu${pxu_id}_pmu/aw,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_pxu${pxu_id}_pmu/w_last,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_pxu${pxu_id}_pmu/w_err,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_pxu${pxu_id}_pmu/b,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_pxu${pxu_id}_pmu/w_data,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_pxu${pxu_id}_pmu/delay_rd,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_pxu${pxu_id}_pmu/rd_max,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_pxu${pxu_id}_pmu/rd_min,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_pxu${pxu_id}_pmu/rdelay_time,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_pxu${pxu_id}_pmu/delay_wr,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_pxu${pxu_id}_pmu/wr_max,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_pxu${pxu_id}_pmu/wr_min,ctrler=0x${ctrler_id}/: 0
+phyt${node_id}_pxu${pxu_id}_pmu/wdelay_time,ctrler=0x${ctrler_id}/: 0
+===========================================
+PXU_Freq: ${pxu_freq_in_GHz} GHz
+PXU_DATA_WIDTH: ${PXU_DATA_WIDTH}
+N(${node_id})X(${pxu_id})C(${ctrler_id})_WR_FLOW_RT: 0 GBps
+N(${node_id})X(${pxu_id})C(${ctrler_id})_RD_FLOW_RT: 0 GBps
+N(${node_id})X(${pxu_id})C(${ctrler_id})_WR_DELAY: 0
+N(${node_id})X(${pxu_id})C(${ctrler_id})_RD_DELAY: 0
+N(${node_id})X(${pxu_id})C(${ctrler_id})_TRANS_ar_RT: 0 GTps
+N(${node_id})X(${pxu_id})C(${ctrler_id})_TRANS_r_last_RT: 0 GTps
+N(${node_id})X(${pxu_id})C(${ctrler_id})_TRANS_r_err_RT: 0 GTps
+N(${node_id})X(${pxu_id})C(${ctrler_id})_TRANS_r_full_RT: 0 GTps
+N(${node_id})X(${pxu_id})C(${ctrler_id})_TRANS_aw_RT: 0 GTps
+N(${node_id})X(${pxu_id})C(${ctrler_id})_TRANS_w_last_RT: 0 GTps
+N(${node_id})X(${pxu_id})C(${ctrler_id})_TRANS_w_err_RT: 0 GTps
+N(${node_id})X(${pxu_id})C(${ctrler_id})_TRANS_b_RT: 0 GTps
+N(${node_id})X(${pxu_id})C(${ctrler_id})_TRANS_delay_rd_RT: 0 GTps
+N(${node_id})X(${pxu_id})C(${ctrler_id})_TRANS_delay_wr_RT: 0 GTps
+

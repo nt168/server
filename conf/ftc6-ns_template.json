@@ -1,0 +1,47 @@
+{
+	"Cache histogram": {
+		"CACHE Effectiveness": {
+			"l1i_cache": "0000",
+			"l1i_cache_refill": "0000",
+			"l1d_cache": "0000",
+			"l1d_cache_refill": "0000",
+			"l2d_cache": "0000",
+			"l2d_cache_refill": "0000"
+		}
+	},
+	"Branch histogram": {
+		"Branch Effectiveness": {
+			"inst_retired": "0000",
+			"inst_spec": "0000",
+			"br_mis_pred": "0000",
+			"br_pred": "0000"
+		}
+	},
+	"MissRt histogram": {
+		"Branch Effectiveness": {
+			"[BR_MP_RT_SPEC]": "0000",
+			"[SPEC_FLUSH_RT]": "0000"
+		},
+		"TLB Effectiveness": {
+			"[L1D_TLB_MS_RT_M]": "0000",
+			"[MEM_ERR_RT]": "0000"
+		},
+		"CACHE Effectiveness": {
+			"[L1I_REFILL_RT]": "0000",
+			"[L1D_REFILL_RT]": "0000",
+			"[L2D_REFILL_RT]": "0000"
+		}
+	},
+	"InstMix PieDiagram": {
+		"Instructions(Compute) Effectiveness": {
+			"[DP_INST_PCT]": "0000",
+			"[ASE_INST_PCT]": "0000",
+			"[VFP_INST_PCT]": "0000",
+			"[CRYPTO_INST_PCT]": "0000"
+		},
+		"Instructions(Branch&LdSt) Effectiveness": {
+			"[BR_INST_PCT]": "0000",
+			"[LDST_INST_PCT]": "0000"
+		}
+	}
+}

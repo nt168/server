@@ -1,0 +1,21 @@
+{
+	"title": "",
+	"DDR Node(${node_id})HM(${hm_id})CHANNEL(${pmu_id}); DDR_Freq:${ddr_freq_in_GHz}GHz; DDR_DATA_WIDTH:${DDR_DATA_WIDTH}; DDR Effectiveness": {
+		"phyt${node_id}_hm${hm_id}_pmu${pmu_id}/cycles/": "0",
+		"phyt${node_id}_hm${hm_id}_pmu${pmu_id}/rxreq/": "0",
+		"phyt${node_id}_hm${hm_id}_pmu${pmu_id}/rxreq_RNS/": "0",
+		"phyt${node_id}_hm${hm_id}_pmu${pmu_id}/rxreq_WNSP/": "0",
+		"phyt${node_id}_hm${hm_id}_pmu${pmu_id}/rxreq_WNSF/": "0",
+		"phyt${node_id}_hm${hm_id}_pmu${pmu_id}/rxdat/": "0",
+		"phyt${node_id}_hm${hm_id}_pmu${pmu_id}/txdat/": "0",
+		"phyt${node_id}_hm${hm_id}_pmu${pmu_id}/bandwidth/": "0",
+		"N(${node_id})H(${hm_id})C(${pmu_id})_DDR_WR_FLOW_RT": "0 GBps",
+		"N(${node_id})H(${hm_id})C(${pmu_id})_DDR_RD_FLOW_RT": "0 GBps",
+		"[N(${node_id})H(${hm_id})C(${pmu_id})_TRANS_rxreq_RT]": "0 GTps",
+		"[N(${node_id})H(${hm_id})C(${pmu_id})_TRANS_rxreq_RNS_RT]": "0 GTps",
+		"[N(${node_id})H(${hm_id})C(${pmu_id})_TRANS_rxreq_WNSP_RT]": "0 GTps",
+		"[N(${node_id})H(${hm_id})C(${pmu_id})_TRANS_rxreq_WNSF_RT]": "0 GTps",
+		"[N(${node_id})H(${hm_id})C(${pmu_id})_TRANS_rxdat_RT]": "0 GTps",
+		"[N(${node_id})H(${hm_id})C(${pmu_id})_TRANS_txdat_RT]": "0 GTps"
+	}
+}

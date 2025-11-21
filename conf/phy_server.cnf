@@ -1,0 +1,20 @@
+#这个配置文件用于server
+####################### 通 用 设 置 ####################
+#server配置
+CpuArch=arm
+CpuModel=FT-2000/4-EN
+TmpDir=/tmp/phy
+LogDir=log
+MessChannelDir=channel
+LogType=file
+LogFile=phy_server.log
+LogFileSize=30
+DebugLevel=5
+PhyDB=phyconf.db
+PhyDbConsole=phy_db_console
+User=nt
+Pawd=abcd1234
+ResultsDir=/opt/phytune/server/results
+#agent通用配置
+AgentPackage=/opt/phytune/agent
+######################################################

@@ -1,0 +1,18 @@
+{
+	"数据流量  histogram": {
+		"DDR_Freq": "${ddr_freq_in_GHz} GHz",
+		"DDR_DATA_WIDTH": "${DDR_DATA_WIDTH}",
+		"N(${node_id})H(${hm_id})C(${pmu_id})_DDR_WR_FLOW_RT": "0 GBps",
+		"N(${node_id})H(${hm_id})C(${pmu_id})_DDR_RD_FLOW_RT": "0 GBps"
+	},
+	"事务流量  histogram": {
+		"DDR_Freq": "${ddr_freq_in_GHz} GHz",
+		"DDR_DATA_WIDTH": "${DDR_DATA_WIDTH}",
+		"N(${node_id})H(${hm_id})C(${pmu_id})_TRANS_rxreq_RT": "0 GTps",
+		"N(${node_id})H(${hm_id})C(${pmu_id})_TRANS_rxreq_RNS_RT": "0 GTps",
+		"N(${node_id})H(${hm_id})C(${pmu_id})_TRANS_rxreq_WNSP_RT": "0 GTps",
+		"N(${node_id})H(${hm_id})C(${pmu_id})_TRANS_rxreq_WNSF_RT": "0 GTps",
+		"N(${node_id})H(${hm_id})C(${pmu_id})_TRANS_rxdat_RT": "0 GTps",
+		"N(${node_id})H(${hm_id})C(${pmu_id})_TRANS_txdat_RT": "0 GTps"
+	}
+}

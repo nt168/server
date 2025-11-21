@@ -1,0 +1,94 @@
+{
+	"互联流量 histogram": {
+		"XP(Mesh Flow - dat) Effectiveness": {
+			"XP(dat)_VALID_FLOW_RT": "0000",
+			"XP(dat)_STALL_FLOW_RT": "0000",
+			"XP(dat)_PARTIAL_FLOW_RT": "0000"
+		},
+		"XP(Mesh Flow - req) Effectiveness": {
+			"XP(req)_VALID_FLOW_RT": "0000",
+			"XP(req)_STALL_FLOW_RT": "0000",
+			"XP(req)_PARTIAL_FLOW_RT": "0000"
+		},
+		"XP(Mesh Flow - rsp) Effectiveness": {
+			"XP(rsp)_VALID_FLOW_RT": "0000",
+			"XP(rsp)_STALL_FLOW_RT": "0000",
+			"XP(rsp)_PARTIAL_FLOW_RT": "0000"
+		},
+		"XP(Mesh Flow - snp) Effectiveness": {
+			"XP(snp)_VALID_FLOW_RT": "0000",
+			"XP(snp)_STALL_FLOW_RT": "0000",
+			"XP(snp)_PARTIAL_FLOW_RT": "0000"
+		}
+	},
+	"设备P0流量 histogram": {
+		"XP(Device Flow - dat) Effectiveness": {
+			"XP(dat)_P0_VALID_FLOW_RT": "0000",
+			"XP(dat)_P0_STALL_FLOW_RT": "0000",
+			"XP(dat)_P0_PARTIAL_FLOW_RT": "0000"
+		},
+		"XP(Device Flow - req) Effectiveness": {
+			"XP(req)_P0_VALID_FLOW_RT": "0000",
+			"XP(req)_P0_STALL_FLOW_RT": "0000",
+			"XP(req)_P0_PARTIAL_FLOW_RT": "0000"
+		},
+		"XP(Device Flow - rsp) Effectiveness": {
+			"XP(rsp)_P0_VALID_FLOW_RT": "0000",
+			"XP(rsp)_P0_STALL_FLOW_RT": "0000",
+			"XP(rsp)_P0_PARTIAL_FLOW_RT": "0000"
+		},
+		"XP(Device Flow - snp) Effectiveness": {
+			"XP(snp)_P0_VALID_FLOW_RT": "0000",
+			"XP(snp)_P0_STALL_FLOW_RT": "0000",
+			"XP(snp)_P0_PARTIAL_FLOW_RT": "0000"
+		}
+	},
+	"设备P1流量 histogram": {
+		"XP(Device Flow - dat) Effectiveness": {
+			"XP(dat)_P1_VALID_FLOW_RT": "0000",
+			"XP(dat)_P1_STALL_FLOW_RT": "0000",
+			"XP(dat)_P1_PARTIAL_FLOW_RT": "0000"
+		},
+		"XP(Device Flow - req) Effectiveness": {
+			"XP(req)_P1_VALID_FLOW_RT": "0000",
+			"XP(req)_P1_STALL_FLOW_RT": "0000",
+			"XP(req)_P1_PARTIAL_FLOW_RT": "0000"
+		},
+		"XP(Device Flow - rsp) Effectiveness": {
+			"XP(rsp)_P1_VALID_FLOW_RT": "0000",
+			"XP(rsp)_P1_STALL_FLOW_RT": "0000",
+			"XP(rsp)_P1_PARTIAL_FLOW_RT": "0000"
+		},
+		"XP(Device Flow - snp) Effectiveness": {
+			"XP(snp)_P1_VALID_FLOW_RT": "0000",
+			"XP(snp)_P1_STALL_FLOW_RT": "0000",
+			"XP(snp)_P1_PARTIAL_FLOW_RT": "0000"
+		}
+	},
+	"HNF/RNID性能  histogram": {
+		"HNF(L3/SLC) Effectiveness": {
+			"[L3_MISS_RT]": "0000"
+		},
+		"HNF(POCQ) Effectiveness": {
+			"[POCQ_RETRY_RT]": "0000"
+		},
+		"HNF(SF) Effectiveness": {
+			"[DATA_SHARE_RT]": "0000"
+		},
+		"HNF(MC) Effectiveness": {
+			"[MC_RETRY_RT]": "0000"
+		}
+	},
+	"RNID流量  histogram": {
+		"RNID(Flow) Effectiveness": {
+			"RNI_S0_RD_FLOW_RT": "0000",
+			"RNI_S1_RD_FLOW_RT": "0000",
+			"RNI_S2_RD_FLOW_RT": "0000",
+			"RNI_S0_WR_FLOW_RT": "0000",
+			"RNI_S1_WR_FLOW_RT": "0000",
+			"RNI_S2_WR_FLOW_RT": "0000",
+			"RNI_RXDATA_FLOW_RT": "0000",
+			"RNI_TXDATA_FLOW_RT": "0000"
+		}
+	}
+}
