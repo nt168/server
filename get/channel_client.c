@@ -90,6 +90,15 @@ static void build_ctrlagt_insert(struct transfer *out, const char *addr, const c
     snprintf(out->td.mes, sizeof(out->td.mes), "%s;%s;%s", addr, user, password);
 }
 
+static void build_req(struct transfer *out, int mtp, int stp, char *addr, const char *user, const char *password) {
+    memset(out, 0, sizeof(*out));
+    out->mma.matp = mtp;
+    out->mma.mct = stp;
+
+    snprintf(out->td.sender, sizeof(out->td.sender), "%s", "get");
+    snprintf(out->td.mes, sizeof(out->td.mes), "%s;%s;%s", addr, user, password);
+}
+
 static void print_transfer(const struct transfer *tran) {
     printf("Message family: %d\n", tran->mma.matp);
     switch (tran->mma.matp) {
@@ -146,6 +155,42 @@ bool send_mix_history(const struct get_config *cfg, const char *receiver, mesdet
 bool send_ctrlagt_insert(const struct get_config *cfg, const char *addr, const char *user, const char *password, int timeout_sec) {
     struct transfer request;
     build_ctrlagt_insert(&request, addr, user, password);
+
+    int write_fd = open(cfg->fifo_read, O_WRONLY);
+    if (write_fd < 0) {
+        perror("open fifo_read for write");
+        return false;
+    }
+
+    bool ok = write_full(write_fd, &request, sizeof(request));
+    close(write_fd);
+    if (!ok) {
+        fprintf(stderr, "Failed to send request to server\n");
+        return false;
+    }
+
+    int read_fd = open(cfg->fifo_write, O_RDONLY);
+    if (read_fd < 0) {
+        perror("open fifo_write for read");
+        return false;
+    }
+
+    struct transfer resp;
+    memset(&resp, 0, sizeof(resp));
+    ok = read_full_with_timeout(read_fd, &resp, sizeof(resp), timeout_sec);
+    close(read_fd);
+    if (!ok) {
+        fprintf(stderr, "Failed to read response from server\n");
+        return false;
+    }
+
+    print_transfer(&resp);
+    return true;
+}
+
+bool send_ctrl(const struct get_config *cfg, int mtp, int stp, const char *addr, const char *user, const char *password, int timeout_sec) {
+    struct transfer request;
+    build_req(&request, mtp, stp, addr, user, password);
 
     int write_fd = open(cfg->fifo_read, O_WRONLY);
     if (write_fd < 0) {

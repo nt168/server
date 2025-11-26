@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-std=c11 -Wall -Wextra -I. -Istubs
+CFLAGS=-g -std=c11 -Wall -Wextra -I. -Istubs
 TARGET=get_client
 SRCS=main.c config.c channel_client.c
 OBJS=$(SRCS:.c=.o)

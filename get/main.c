@@ -116,6 +116,52 @@ int main(int argc, char **argv) {
         fprintf(stderr, "Using default configuration because %s could not be read.\n", config_path);
     }
 
+    switch (main_type_arg)
+    {
+        case STATUS:
+             if (!send_ctrl(&cfg, STATUS, sub_type_arg, addr, user, password, timeout_sec)) {
+                return 1;
+            }
+        break;
+
+        case DETECT:
+        /* code */
+        break; 
+
+        case MESS:
+        /* code */
+        break;
+           
+        case CTRLAGT:
+            if (!send_ctrl(&cfg, CTRLAGT, sub_type_arg, addr, user, password, timeout_sec)) {
+                return 1;
+            }
+        break;
+           
+        case EXECUT:
+        /* code */
+        break;
+           
+        case OPTIM:
+        /* code */
+        break;
+           
+        case HISTORY:
+        /* code */
+        break;
+           
+        case MIX:
+        /* code */
+        break;
+           
+        case HEARTBEAT:
+        /* code */
+        break;
+
+        default:
+            break;
+    }
+
     if (!send_ctrlagt_insert(&cfg, addr, user, password, timeout_sec)) {
         return 1;
     }
