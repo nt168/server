@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-GET_BIN=${1:-./get_client}
+GET_BIN=${1:-./get}
 FAKE_SERVER=${2:-./tests/fake_server}
 
 TMP_DIR=$(mktemp -d -t get-tests-XXXX)

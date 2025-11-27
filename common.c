@@ -1,4 +1,4 @@
-#include "../src/common.h"
+#include "common.h"
 #include "setproctitle.h"
 #include <pthread.h>
 #include <semaphore.h>

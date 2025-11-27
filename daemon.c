@@ -1,4 +1,4 @@
-#include "../src/daemon.h"
+#include "daemon.h"
 
 #include <pthread.h>
 #include <sys/types.h>

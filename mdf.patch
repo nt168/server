@@ -1,0 +1,1044 @@
+diff --git a/serv/Debug/makefile b/Debug/makefile
+similarity index 100%
+rename from serv/Debug/makefile
+rename to Debug/makefile
+diff --git a/serv/Debug/sources.mk b/Debug/sources.mk
+similarity index 100%
+rename from serv/Debug/sources.mk
+rename to Debug/sources.mk
+diff --git a/serv/Debug/src/phy_sql/subdir.mk b/Debug/src/phy_sql/subdir.mk
+similarity index 100%
+rename from serv/Debug/src/phy_sql/subdir.mk
+rename to Debug/src/phy_sql/subdir.mk
+diff --git a/serv/Debug/src/prompt/subdir.mk b/Debug/src/prompt/subdir.mk
+similarity index 100%
+rename from serv/Debug/src/prompt/subdir.mk
+rename to Debug/src/prompt/subdir.mk
+diff --git a/serv/Debug/src/subdir.mk b/Debug/src/subdir.mk
+similarity index 100%
+rename from serv/Debug/src/subdir.mk
+rename to Debug/src/subdir.mk
+diff --git a/Makefile b/Makefile
+new file mode 100644
+index 0000000000000000000000000000000000000000..4adb51f2f7d0b1f9891de6060e33766f32c987e3
+--- /dev/null
++++ b/Makefile
+@@ -0,0 +1,33 @@
++CC ?= gcc
++CFLAGS ?= -g -std=c11 -Wall -Wextra
++CPPFLAGS ?= -I. -Ilibssh -Ilibdepds/libssh-0.9.3/include -Iphy_sql -Itty -Iprompt
++CPPFLAGS += -D_GNU_SOURCE
++LDFLAGS ?=
++LDFLAGS += -Llibdepds/libssh-0.9.3/lib
++LDLIBS ?= -lssh -lpthread -lm -ldl -lutil
++
++GET_TARGET := get
++EXCLUDE_SRCS := ./prompt/fzy.c ./async/async_server.c ./async/server.c ./tty/mytty.c
++SERVER_SRCS := $(filter-out $(EXCLUDE_SRCS), $(shell find . -path './get' -prune -o -path './async' -prune -o -name '*.c' -print))
++SERVER_OBJS := $(SERVER_SRCS:.c=.o)
++SERVER_BIN := server
++
++.PHONY: all server get clean
++
++all: $(SERVER_BIN) get
++
++$(SERVER_BIN): $(SERVER_OBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(SERVER_OBJS) $(LDLIBS)
++
++%.o: %.c
++	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< -o $@
++
++server: $(SERVER_BIN)
++
++get:
++	$(MAKE) -C get TARGET=$(GET_TARGET)
++
++clean:
++	rm -f $(SERVER_BIN) $(SERVER_OBJS)
++	find . -name '*.o' -not -path './get/*' -delete
++	$(MAKE) -C get clean
+diff --git a/serv/src/arg_parser.c b/arg_parser.c
+similarity index 100%
+rename from serv/src/arg_parser.c
+rename to arg_parser.c
+diff --git a/serv/src/arg_parser.h b/arg_parser.h
+similarity index 100%
+rename from serv/src/arg_parser.h
+rename to arg_parser.h
+diff --git a/serv/src/arg_validity_check.c b/arg_validity_check.c
+similarity index 100%
+rename from serv/src/arg_validity_check.c
+rename to arg_validity_check.c
+diff --git a/serv/src/async/ae.c b/async/ae.c
+similarity index 100%
+rename from serv/src/async/ae.c
+rename to async/ae.c
+diff --git a/serv/src/async/ae.h b/async/ae.h
+similarity index 100%
+rename from serv/src/async/ae.h
+rename to async/ae.h
+diff --git a/serv/src/async/ae_epoll.c b/async/ae_epoll.c
+similarity index 100%
+rename from serv/src/async/ae_epoll.c
+rename to async/ae_epoll.c
+diff --git a/serv/src/async/ae_evport.c b/async/ae_evport.c
+similarity index 100%
+rename from serv/src/async/ae_evport.c
+rename to async/ae_evport.c
+diff --git a/serv/src/async/ae_kqueue.c b/async/ae_kqueue.c
+similarity index 100%
+rename from serv/src/async/ae_kqueue.c
+rename to async/ae_kqueue.c
+diff --git a/serv/src/async/ae_select.c b/async/ae_select.c
+similarity index 100%
+rename from serv/src/async/ae_select.c
+rename to async/ae_select.c
+diff --git a/serv/src/async/anet.c b/async/anet.c
+similarity index 100%
+rename from serv/src/async/anet.c
+rename to async/anet.c
+diff --git a/serv/src/async/anet.h b/async/anet.h
+similarity index 100%
+rename from serv/src/async/anet.h
+rename to async/anet.h
+diff --git a/serv/src/async/async_server.c b/async/async_server.c
+similarity index 100%
+rename from serv/src/async/async_server.c
+rename to async/async_server.c
+diff --git a/serv/src/async/atomicvar.h b/async/atomicvar.h
+similarity index 100%
+rename from serv/src/async/atomicvar.h
+rename to async/atomicvar.h
+diff --git a/serv/src/async/config.h b/async/config.h
+similarity index 100%
+rename from serv/src/async/config.h
+rename to async/config.h
+diff --git a/serv/src/async/connection.c b/async/connection.c
+similarity index 100%
+rename from serv/src/async/connection.c
+rename to async/connection.c
+diff --git a/serv/src/async/connection.h b/async/connection.h
+similarity index 100%
+rename from serv/src/async/connection.h
+rename to async/connection.h
+diff --git a/serv/src/async/fast_float.h b/async/fast_float.h
+similarity index 100%
+rename from serv/src/async/fast_float.h
+rename to async/fast_float.h
+diff --git a/serv/src/async/fast_float_strtod.h b/async/fast_float_strtod.h
+similarity index 100%
+rename from serv/src/async/fast_float_strtod.h
+rename to async/fast_float_strtod.h
+diff --git a/serv/src/async/fmacros.h b/async/fmacros.h
+similarity index 100%
+rename from serv/src/async/fmacros.h
+rename to async/fmacros.h
+diff --git a/serv/src/async/fpconv_dtoa.c b/async/fpconv_dtoa.c
+similarity index 100%
+rename from serv/src/async/fpconv_dtoa.c
+rename to async/fpconv_dtoa.c
+diff --git a/serv/src/async/fpconv_dtoa.h b/async/fpconv_dtoa.h
+similarity index 100%
+rename from serv/src/async/fpconv_dtoa.h
+rename to async/fpconv_dtoa.h
+diff --git a/serv/src/async/fpconv_powers.h b/async/fpconv_powers.h
+similarity index 100%
+rename from serv/src/async/fpconv_powers.h
+rename to async/fpconv_powers.h
+diff --git a/serv/src/async/iothread.c b/async/iothread.c
+similarity index 100%
+rename from serv/src/async/iothread.c
+rename to async/iothread.c
+diff --git a/serv/src/async/monotonic.c b/async/monotonic.c
+similarity index 100%
+rename from serv/src/async/monotonic.c
+rename to async/monotonic.c
+diff --git a/serv/src/async/monotonic.h b/async/monotonic.h
+similarity index 100%
+rename from serv/src/async/monotonic.h
+rename to async/monotonic.h
+diff --git a/serv/src/async/networking.c b/async/networking.c
+similarity index 100%
+rename from serv/src/async/networking.c
+rename to async/networking.c
+diff --git a/serv/src/async/redisassert.c b/async/redisassert.c
+similarity index 100%
+rename from serv/src/async/redisassert.c
+rename to async/redisassert.c
+diff --git a/serv/src/async/redisassert.h b/async/redisassert.h
+similarity index 100%
+rename from serv/src/async/redisassert.h
+rename to async/redisassert.h
+diff --git a/serv/src/async/sds.c b/async/sds.c
+similarity index 100%
+rename from serv/src/async/sds.c
+rename to async/sds.c
+diff --git a/serv/src/async/sds.h b/async/sds.h
+similarity index 100%
+rename from serv/src/async/sds.h
+rename to async/sds.h
+diff --git a/serv/src/async/sdsalloc.h b/async/sdsalloc.h
+similarity index 100%
+rename from serv/src/async/sdsalloc.h
+rename to async/sdsalloc.h
+diff --git a/serv/src/async/server.c b/async/server.c
+similarity index 100%
+rename from serv/src/async/server.c
+rename to async/server.c
+diff --git a/serv/src/async/server.h b/async/server.h
+similarity index 100%
+rename from serv/src/async/server.h
+rename to async/server.h
+diff --git a/serv/src/async/sha256.c b/async/sha256.c
+similarity index 100%
+rename from serv/src/async/sha256.c
+rename to async/sha256.c
+diff --git a/serv/src/async/sha256.h b/async/sha256.h
+similarity index 100%
+rename from serv/src/async/sha256.h
+rename to async/sha256.h
+diff --git a/serv/src/async/solarisfixes.h b/async/solarisfixes.h
+similarity index 100%
+rename from serv/src/async/solarisfixes.h
+rename to async/solarisfixes.h
+diff --git a/serv/src/async/strl.c b/async/strl.c
+similarity index 100%
+rename from serv/src/async/strl.c
+rename to async/strl.c
+diff --git a/serv/src/async/util.c b/async/util.c
+similarity index 100%
+rename from serv/src/async/util.c
+rename to async/util.c
+diff --git a/serv/src/async/util.h b/async/util.h
+similarity index 100%
+rename from serv/src/async/util.h
+rename to async/util.h
+diff --git a/serv/src/async/zmalloc.c b/async/zmalloc.c
+similarity index 100%
+rename from serv/src/async/zmalloc.c
+rename to async/zmalloc.c
+diff --git a/serv/src/async/zmalloc.h b/async/zmalloc.h
+similarity index 100%
+rename from serv/src/async/zmalloc.h
+rename to async/zmalloc.h
+diff --git a/serv/src/base64.c b/base64.c
+similarity index 100%
+rename from serv/src/base64.c
+rename to base64.c
+diff --git a/serv/src/base64.h b/base64.h
+similarity index 100%
+rename from serv/src/base64.h
+rename to base64.h
+diff --git a/serv/src/cfg.c b/cfg.c
+similarity index 100%
+rename from serv/src/cfg.c
+rename to cfg.c
+diff --git a/serv/src/cfg.h b/cfg.h
+similarity index 100%
+rename from serv/src/cfg.h
+rename to cfg.h
+diff --git a/serv/src/channel.c b/channel.c
+similarity index 100%
+rename from serv/src/channel.c
+rename to channel.c
+diff --git a/serv/src/channel.h b/channel.h
+similarity index 100%
+rename from serv/src/channel.h
+rename to channel.h
+diff --git a/serv/src/cjson.c b/cjson.c
+similarity index 100%
+rename from serv/src/cjson.c
+rename to cjson.c
+diff --git a/serv/src/cjson.h b/cjson.h
+similarity index 100%
+rename from serv/src/cjson.h
+rename to cjson.h
+diff --git a/serv/src/common.c b/common.c
+similarity index 99%
+rename from serv/src/common.c
+rename to common.c
+index 051b60551a9e0228236b93853a6dc0b3ce57e82f..0b2109c7fee0a3ce11da14a9ea259d697f4b23c3 100644
+--- a/serv/src/common.c
++++ b/common.c
+@@ -1,26 +1,26 @@
+-#include "../src/common.h"
++#include "common.h"
+ #include "setproctitle.h"
+ #include <pthread.h>
+ #include <semaphore.h>
+ #include "log.h"
+ #include <unistd.h>
+ #include <signal.h>
+ #include "libssh/sftp.h"
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <pthread.h>
+ #include "hashmap.h"
+ 
+ static PHY_THREAD_LOCAL volatile sig_atomic_t	phy_timed_out;
+ extern pthread_t tid;
+ extern char* CONFIG_REMOTESCPFILE_SH;
+ extern char	*CONFIG_REMOTEVSCPFILE_SH;
+ extern char* CONFIG_REMOTEEXECUTE_SH;
+ extern char* CONFIG_REMOTEEXECUTEFORK_SH;
+ extern char* CONFIG_REMOTEPROXYSCPFILE_SH;
+ extern char* CONFIG_REMOTEPROXYEXECUTE_SH;
+ 
+ extern sem_t *p_sem_serv_run;
+ extern sem_t *p_sem_qwnd_run;
+ 
+ void	phy_free_service_resources(void)
+diff --git a/serv/src/common.h b/common.h
+similarity index 100%
+rename from serv/src/common.h
+rename to common.h
+diff --git a/serv/conf/agent b/conf/agent
+similarity index 100%
+rename from serv/conf/agent
+rename to conf/agent
+diff --git a/serv/conf/agentlist b/conf/agentlist
+similarity index 100%
+rename from serv/conf/agentlist
+rename to conf/agentlist
+diff --git a/serv/conf/anal-ns_template.json b/conf/anal-ns_template.json
+similarity index 100%
+rename from serv/conf/anal-ns_template.json
+rename to conf/anal-ns_template.json
+diff --git a/serv/conf/c2c-ns_template.json b/conf/c2c-ns_template.json
+similarity index 100%
+rename from serv/conf/c2c-ns_template.json
+rename to conf/c2c-ns_template.json
+diff --git a/serv/conf/ddr-ns_template.json b/conf/ddr-ns_template.json
+similarity index 100%
+rename from serv/conf/ddr-ns_template.json
+rename to conf/ddr-ns_template.json
+diff --git a/serv/conf/ddr-ns_template.txt b/conf/ddr-ns_template.txt
+similarity index 100%
+rename from serv/conf/ddr-ns_template.txt
+rename to conf/ddr-ns_template.txt
+diff --git a/serv/conf/ftc6-ns_template.json b/conf/ftc6-ns_template.json
+similarity index 100%
+rename from serv/conf/ftc6-ns_template.json
+rename to conf/ftc6-ns_template.json
+diff --git a/serv/conf/ftc8-ns_template.json b/conf/ftc8-ns_template.json
+similarity index 100%
+rename from serv/conf/ftc8-ns_template.json
+rename to conf/ftc8-ns_template.json
+diff --git a/serv/conf/noc-ns_template.json b/conf/noc-ns_template.json
+similarity index 100%
+rename from serv/conf/noc-ns_template.json
+rename to conf/noc-ns_template.json
+diff --git a/serv/conf/noc-ns_template.txt b/conf/noc-ns_template.txt
+similarity index 100%
+rename from serv/conf/noc-ns_template.txt
+rename to conf/noc-ns_template.txt
+diff --git a/serv/conf/pcie-ns_template.json b/conf/pcie-ns_template.json
+similarity index 100%
+rename from serv/conf/pcie-ns_template.json
+rename to conf/pcie-ns_template.json
+diff --git a/serv/conf/peu-ns_template.json b/conf/peu-ns_template.json
+similarity index 100%
+rename from serv/conf/peu-ns_template.json
+rename to conf/peu-ns_template.json
+diff --git a/serv/conf/peu-ns_template.txt b/conf/peu-ns_template.txt
+similarity index 100%
+rename from serv/conf/peu-ns_template.txt
+rename to conf/peu-ns_template.txt
+diff --git a/serv/conf/phyconf.db b/conf/phyconf.db
+similarity index 100%
+rename from serv/conf/phyconf.db
+rename to conf/phyconf.db
+diff --git a/serv/conf/phytune.db b/conf/phytune.db
+similarity index 100%
+rename from serv/conf/phytune.db
+rename to conf/phytune.db
+diff --git a/serv/conf/pxu-ns_template.json b/conf/pxu-ns_template.json
+similarity index 100%
+rename from serv/conf/pxu-ns_template.json
+rename to conf/pxu-ns_template.json
+diff --git a/serv/conf/pxu-ns_template.txt b/conf/pxu-ns_template.txt
+similarity index 100%
+rename from serv/conf/pxu-ns_template.txt
+rename to conf/pxu-ns_template.txt
+diff --git a/serv/conf/server.cnf b/conf/server.cnf
+similarity index 100%
+rename from serv/conf/server.cnf
+rename to conf/server.cnf
+diff --git a/serv/src/config.h b/config.h
+similarity index 100%
+rename from serv/src/config.h
+rename to config.h
+diff --git a/serv/src/daemon.c b/daemon.c
+similarity index 99%
+rename from serv/src/daemon.c
+rename to daemon.c
+index e1dc01953032d1b6f94a25df2ab4e9bdb7fe20e6..6bf46935c1470abcc5d46670bbd3aa119b0beea9 100644
+--- a/serv/src/daemon.c
++++ b/daemon.c
+@@ -1,26 +1,26 @@
+-#include "../src/daemon.h"
++#include "daemon.h"
+ 
+ #include <pthread.h>
+ #include <sys/types.h>
+ 
+ #include <sys/wait.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ 
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <errno.h>
+ #include <string.h>
+ #include <signal.h>
+ 
+ #include "channel.h"
+ #include "common.h"
+ //#include "server/phy_server.h"
+ #include "log.h"
+ #include "phy_tty.h"
+ #include "poller.h"
+ 
+ static int	parent_pid = -1;
+ static FILE	*fpid = NULL;
+ static int	fdpid = -1;
+ int	sig_parent_pid = -1;
+diff --git a/serv/src/daemon.h b/daemon.h
+similarity index 100%
+rename from serv/src/daemon.h
+rename to daemon.h
+diff --git a/serv/src/ddr.c b/ddr.c
+similarity index 100%
+rename from serv/src/ddr.c
+rename to ddr.c
+diff --git a/serv/src/ddr.h b/ddr.h
+similarity index 100%
+rename from serv/src/ddr.h
+rename to ddr.h
+diff --git a/serv/src/env_check.c b/env_check.c
+similarity index 100%
+rename from serv/src/env_check.c
+rename to env_check.c
+diff --git a/serv/src/env_check.h b/env_check.h
+similarity index 100%
+rename from serv/src/env_check.h
+rename to env_check.h
+diff --git a/serv/src/fatal.c b/fatal.c
+similarity index 100%
+rename from serv/src/fatal.c
+rename to fatal.c
+diff --git a/serv/src/fatal.h b/fatal.h
+similarity index 100%
+rename from serv/src/fatal.h
+rename to fatal.h
+diff --git a/serv/src/filebrowser.c b/filebrowser.c
+similarity index 100%
+rename from serv/src/filebrowser.c
+rename to filebrowser.c
+diff --git a/serv/src/filebrowser.h b/filebrowser.h
+similarity index 100%
+rename from serv/src/filebrowser.h
+rename to filebrowser.h
+diff --git a/get/Makefile b/get/Makefile
+index 123fe1dc3241bfa6c24c0a3b31a6e16cc331b23d..32fd059db1759c43019737b16bb3a9b0eb8a486a 100644
+--- a/get/Makefile
++++ b/get/Makefile
+@@ -1,25 +1,25 @@
+ CC=gcc
+ CFLAGS=-g -std=c11 -Wall -Wextra -I. -Istubs
+-TARGET=get_client
++TARGET?=get
+ SRCS=main.c config.c channel_client.c
+ OBJS=$(SRCS:.c=.o)
+ 
+ all: $(TARGET)
+ 
+ $(TARGET): $(OBJS)
+ 	$(CC) $(CFLAGS) -o $@ $(OBJS)
+ 
+ %.o: %.c
+ 	$(CC) $(CFLAGS) -c $< -o $@
+ 
+ tests/fake_server: tests/fake_server.c protocol.h
+ 	$(CC) $(CFLAGS) -o $@ $<
+ 
+ test: $(TARGET) tests/fake_server
+ 	./tests/run_tests.sh ./$(TARGET) ./tests/fake_server
+ 
+ clean:
+ 	rm -f $(TARGET) $(OBJS) tests/fake_server
+ 	rm -rf tests/tmp*
+ 
+ .PHONY: all clean test
+diff --git a/get/tests/run_tests.sh b/get/tests/run_tests.sh
+index 51d8174e87502548c20f597c3fcb72ceed66282a..002c75f08607da063143fd9802d403e250e92ec0 100755
+--- a/get/tests/run_tests.sh
++++ b/get/tests/run_tests.sh
+@@ -1,29 +1,29 @@
+ #!/usr/bin/env bash
+ set -euo pipefail
+ 
+-GET_BIN=${1:-./get_client}
++GET_BIN=${1:-./get}
+ FAKE_SERVER=${2:-./tests/fake_server}
+ 
+ TMP_DIR=$(mktemp -d -t get-tests-XXXX)
+ CHANNEL_DIR="$TMP_DIR/channel"
+ mkdir -p "$CHANNEL_DIR"
+ mkfifo "$CHANNEL_DIR/Read" "$CHANNEL_DIR/Write"
+ 
+ CONFIG_FILE="$TMP_DIR/phy_server.cnf"
+ cat > "$CONFIG_FILE" <<CFG
+ TmpDir=$TMP_DIR
+ MessChannelDir=channel
+ CFG
+ 
+ EXPECTED_TYPE="DDR"
+ 
+ # test control agent insert path
+ $FAKE_SERVER --read "$CHANNEL_DIR/Read" --write "$CHANNEL_DIR/Write" --expect-type "$EXPECTED_TYPE" &
+ FAKE_PID=$!
+ 
+ set +e
+ OUTPUT=$($GET_BIN --config "$CONFIG_FILE" 1 1 127.0.0.1 testuser testpwd --timeout 2)
+ STATUS=$?
+ set -e
+ 
+ wait $FAKE_PID || true
+diff --git a/serv/src/handle.c b/handle.c
+similarity index 100%
+rename from serv/src/handle.c
+rename to handle.c
+diff --git a/serv/src/handle.h b/handle.h
+similarity index 100%
+rename from serv/src/handle.h
+rename to handle.h
+diff --git a/serv/src/hashmap.c b/hashmap.c
+similarity index 100%
+rename from serv/src/hashmap.c
+rename to hashmap.c
+diff --git a/serv/src/hashmap.h b/hashmap.h
+similarity index 100%
+rename from serv/src/hashmap.h
+rename to hashmap.h
+diff --git a/serv/src/history.c b/history.c
+similarity index 100%
+rename from serv/src/history.c
+rename to history.c
+diff --git a/serv/src/history.h b/history.h
+similarity index 100%
+rename from serv/src/history.h
+rename to history.h
+diff --git a/serv/libdepds/libssh-0.9.3/include/libssh/legacy.h b/legacy.h
+similarity index 100%
+rename from serv/libdepds/libssh-0.9.3/include/libssh/legacy.h
+rename to legacy.h
+diff --git a/serv/libdepds/libssh-0.9.3/include/libssh/callbacks.h b/libdepds/libssh-0.9.3/include/libssh/callbacks.h
+similarity index 100%
+rename from serv/libdepds/libssh-0.9.3/include/libssh/callbacks.h
+rename to libdepds/libssh-0.9.3/include/libssh/callbacks.h
+diff --git a/serv/src/legacy.h b/libdepds/libssh-0.9.3/include/libssh/legacy.h
+similarity index 100%
+rename from serv/src/legacy.h
+rename to libdepds/libssh-0.9.3/include/libssh/legacy.h
+diff --git a/serv/libdepds/libssh-0.9.3/include/libssh/libssh.h b/libdepds/libssh-0.9.3/include/libssh/libssh.h
+similarity index 100%
+rename from serv/libdepds/libssh-0.9.3/include/libssh/libssh.h
+rename to libdepds/libssh-0.9.3/include/libssh/libssh.h
+diff --git a/serv/libdepds/libssh-0.9.3/include/libssh/libsshpp.hpp b/libdepds/libssh-0.9.3/include/libssh/libsshpp.hpp
+similarity index 100%
+rename from serv/libdepds/libssh-0.9.3/include/libssh/libsshpp.hpp
+rename to libdepds/libssh-0.9.3/include/libssh/libsshpp.hpp
+diff --git a/serv/libdepds/libssh-0.9.3/include/libssh/server.h b/libdepds/libssh-0.9.3/include/libssh/server.h
+similarity index 100%
+rename from serv/libdepds/libssh-0.9.3/include/libssh/server.h
+rename to libdepds/libssh-0.9.3/include/libssh/server.h
+diff --git a/serv/libdepds/libssh-0.9.3/include/libssh/sftp.h b/libdepds/libssh-0.9.3/include/libssh/sftp.h
+similarity index 100%
+rename from serv/libdepds/libssh-0.9.3/include/libssh/sftp.h
+rename to libdepds/libssh-0.9.3/include/libssh/sftp.h
+diff --git a/serv/libdepds/libssh-0.9.3/include/libssh/ssh2.h b/libdepds/libssh-0.9.3/include/libssh/ssh2.h
+similarity index 100%
+rename from serv/libdepds/libssh-0.9.3/include/libssh/ssh2.h
+rename to libdepds/libssh-0.9.3/include/libssh/ssh2.h
+diff --git a/serv/libdepds/libssh-0.9.3/lib/cmake/libssh/libssh-config-noconfig.cmake b/libdepds/libssh-0.9.3/lib/cmake/libssh/libssh-config-noconfig.cmake
+similarity index 100%
+rename from serv/libdepds/libssh-0.9.3/lib/cmake/libssh/libssh-config-noconfig.cmake
+rename to libdepds/libssh-0.9.3/lib/cmake/libssh/libssh-config-noconfig.cmake
+diff --git a/serv/libdepds/libssh-0.9.3/lib/cmake/libssh/libssh-config-version.cmake b/libdepds/libssh-0.9.3/lib/cmake/libssh/libssh-config-version.cmake
+similarity index 100%
+rename from serv/libdepds/libssh-0.9.3/lib/cmake/libssh/libssh-config-version.cmake
+rename to libdepds/libssh-0.9.3/lib/cmake/libssh/libssh-config-version.cmake
+diff --git a/serv/libdepds/libssh-0.9.3/lib/cmake/libssh/libssh-config.cmake b/libdepds/libssh-0.9.3/lib/cmake/libssh/libssh-config.cmake
+similarity index 100%
+rename from serv/libdepds/libssh-0.9.3/lib/cmake/libssh/libssh-config.cmake
+rename to libdepds/libssh-0.9.3/lib/cmake/libssh/libssh-config.cmake
+diff --git a/serv/libdepds/libssh-0.9.3/lib/libssh.so b/libdepds/libssh-0.9.3/lib/libssh.so
+similarity index 100%
+rename from serv/libdepds/libssh-0.9.3/lib/libssh.so
+rename to libdepds/libssh-0.9.3/lib/libssh.so
+diff --git a/serv/libdepds/libssh-0.9.3/lib/libssh.so.4 b/libdepds/libssh-0.9.3/lib/libssh.so.4
+similarity index 100%
+rename from serv/libdepds/libssh-0.9.3/lib/libssh.so.4
+rename to libdepds/libssh-0.9.3/lib/libssh.so.4
+diff --git a/serv/libdepds/libssh-0.9.3/lib/libssh.so.4.8.4 b/libdepds/libssh-0.9.3/lib/libssh.so.4.8.4
+similarity index 100%
+rename from serv/libdepds/libssh-0.9.3/lib/libssh.so.4.8.4
+rename to libdepds/libssh-0.9.3/lib/libssh.so.4.8.4
+diff --git a/serv/libdepds/libssh-0.9.3/lib/pkgconfig/libssh.pc b/libdepds/libssh-0.9.3/lib/pkgconfig/libssh.pc
+similarity index 100%
+rename from serv/libdepds/libssh-0.9.3/lib/pkgconfig/libssh.pc
+rename to libdepds/libssh-0.9.3/lib/pkgconfig/libssh.pc
+diff --git a/serv/src/libssh/callbacks.h b/libssh/callbacks.h
+similarity index 100%
+rename from serv/src/libssh/callbacks.h
+rename to libssh/callbacks.h
+diff --git a/serv/src/libssh/legacy.h b/libssh/legacy.h
+similarity index 100%
+rename from serv/src/libssh/legacy.h
+rename to libssh/legacy.h
+diff --git a/serv/src/libssh/libssh.h b/libssh/libssh.h
+similarity index 100%
+rename from serv/src/libssh/libssh.h
+rename to libssh/libssh.h
+diff --git a/serv/src/libssh/libsshpp.hpp b/libssh/libsshpp.hpp
+similarity index 100%
+rename from serv/src/libssh/libsshpp.hpp
+rename to libssh/libsshpp.hpp
+diff --git a/serv/src/libssh/server.h b/libssh/server.h
+similarity index 100%
+rename from serv/src/libssh/server.h
+rename to libssh/server.h
+diff --git a/serv/src/libssh/sftp.h b/libssh/sftp.h
+similarity index 100%
+rename from serv/src/libssh/sftp.h
+rename to libssh/sftp.h
+diff --git a/serv/src/libssh/ssh2.h b/libssh/ssh2.h
+similarity index 100%
+rename from serv/src/libssh/ssh2.h
+rename to libssh/ssh2.h
+diff --git a/serv/src/loader.c b/loader.c
+similarity index 100%
+rename from serv/src/loader.c
+rename to loader.c
+diff --git a/serv/src/loader.h b/loader.h
+similarity index 100%
+rename from serv/src/loader.h
+rename to loader.h
+diff --git a/serv/src/log.c b/log.c
+similarity index 100%
+rename from serv/src/log.c
+rename to log.c
+diff --git a/serv/src/log.h b/log.h
+similarity index 100%
+rename from serv/src/log.h
+rename to log.h
+diff --git a/serv/src/messtype.h b/messtype.h
+similarity index 100%
+rename from serv/src/messtype.h
+rename to messtype.h
+diff --git a/serv/src/misc.c b/misc.c
+similarity index 100%
+rename from serv/src/misc.c
+rename to misc.c
+diff --git a/serv/src/mutexs.c b/mutexs.c
+similarity index 100%
+rename from serv/src/mutexs.c
+rename to mutexs.c
+diff --git a/serv/src/mutexs.h b/mutexs.h
+similarity index 100%
+rename from serv/src/mutexs.h
+rename to mutexs.h
+diff --git a/serv/src/ntmp.c b/ntmp.c
+similarity index 100%
+rename from serv/src/ntmp.c
+rename to ntmp.c
+diff --git a/serv/src/ntmp.h b/ntmp.h
+similarity index 100%
+rename from serv/src/ntmp.h
+rename to ntmp.h
+diff --git a/serv/src/nttabs.c b/nttabs.c
+similarity index 100%
+rename from serv/src/nttabs.c
+rename to nttabs.c
+diff --git a/serv/src/nttabs.h b/nttabs.h
+similarity index 100%
+rename from serv/src/nttabs.h
+rename to nttabs.h
+diff --git a/serv/src/pcie.c b/pcie.c
+similarity index 100%
+rename from serv/src/pcie.c
+rename to pcie.c
+diff --git a/serv/src/pcie.h b/pcie.h
+similarity index 100%
+rename from serv/src/pcie.h
+rename to pcie.h
+diff --git a/serv/src/phy_def.h b/phy_def.h
+similarity index 100%
+rename from serv/src/phy_def.h
+rename to phy_def.h
+diff --git a/serv/src/phy_mix.c b/phy_mix.c
+similarity index 100%
+rename from serv/src/phy_mix.c
+rename to phy_mix.c
+diff --git a/serv/src/phy_mix.h b/phy_mix.h
+similarity index 100%
+rename from serv/src/phy_mix.h
+rename to phy_mix.h
+diff --git a/serv/src/phy_sql/phy_sql.c b/phy_sql/phy_sql.c
+similarity index 100%
+rename from serv/src/phy_sql/phy_sql.c
+rename to phy_sql/phy_sql.c
+diff --git a/serv/src/phy_sql/phy_sql.h b/phy_sql/phy_sql.h
+similarity index 100%
+rename from serv/src/phy_sql/phy_sql.h
+rename to phy_sql/phy_sql.h
+diff --git a/serv/src/phy_sql/sqlite3.c b/phy_sql/sqlite3.c
+similarity index 100%
+rename from serv/src/phy_sql/sqlite3.c
+rename to phy_sql/sqlite3.c
+diff --git a/serv/src/phy_sql/sqlite3.h b/phy_sql/sqlite3.h
+similarity index 100%
+rename from serv/src/phy_sql/sqlite3.h
+rename to phy_sql/sqlite3.h
+diff --git a/serv/src/phy_ssh.c b/phy_ssh.c
+similarity index 100%
+rename from serv/src/phy_ssh.c
+rename to phy_ssh.c
+diff --git a/serv/src/phy_ssh.h b/phy_ssh.h
+similarity index 100%
+rename from serv/src/phy_ssh.h
+rename to phy_ssh.h
+diff --git a/serv/src/phy_tty.c b/phy_tty.c
+similarity index 100%
+rename from serv/src/phy_tty.c
+rename to phy_tty.c
+diff --git a/serv/src/phy_tty.h b/phy_tty.h
+similarity index 100%
+rename from serv/src/phy_tty.h
+rename to phy_tty.h
+diff --git a/serv/src/phythreads.h b/phythreads.h
+similarity index 100%
+rename from serv/src/phythreads.h
+rename to phythreads.h
+diff --git a/serv/src/phytypes.h b/phytypes.h
+similarity index 100%
+rename from serv/src/phytypes.h
+rename to phytypes.h
+diff --git a/serv/src/poller.c b/poller.c
+similarity index 100%
+rename from serv/src/poller.c
+rename to poller.c
+diff --git a/serv/src/poller.h b/poller.h
+similarity index 100%
+rename from serv/src/poller.h
+rename to poller.h
+diff --git a/serv/src/procmgr.c b/procmgr.c
+similarity index 100%
+rename from serv/src/procmgr.c
+rename to procmgr.c
+diff --git a/serv/src/procmgr.h b/procmgr.h
+similarity index 100%
+rename from serv/src/procmgr.h
+rename to procmgr.h
+diff --git a/serv/src/prompt/bonus.h b/prompt/bonus.h
+similarity index 100%
+rename from serv/src/prompt/bonus.h
+rename to prompt/bonus.h
+diff --git a/serv/src/prompt/choices.c b/prompt/choices.c
+similarity index 100%
+rename from serv/src/prompt/choices.c
+rename to prompt/choices.c
+diff --git a/serv/src/prompt/choices.h b/prompt/choices.h
+similarity index 100%
+rename from serv/src/prompt/choices.h
+rename to prompt/choices.h
+diff --git a/serv/src/prompt/config.def.h b/prompt/config.def.h
+similarity index 100%
+rename from serv/src/prompt/config.def.h
+rename to prompt/config.def.h
+diff --git a/serv/src/prompt/fzy.c b/prompt/fzy.c
+similarity index 100%
+rename from serv/src/prompt/fzy.c
+rename to prompt/fzy.c
+diff --git a/serv/src/prompt/match.c b/prompt/match.c
+similarity index 100%
+rename from serv/src/prompt/match.c
+rename to prompt/match.c
+diff --git a/serv/src/prompt/match.h b/prompt/match.h
+similarity index 100%
+rename from serv/src/prompt/match.h
+rename to prompt/match.h
+diff --git a/serv/src/prompt/options.c b/prompt/options.c
+similarity index 100%
+rename from serv/src/prompt/options.c
+rename to prompt/options.c
+diff --git a/serv/src/prompt/options.h b/prompt/options.h
+similarity index 100%
+rename from serv/src/prompt/options.h
+rename to prompt/options.h
+diff --git a/serv/src/prompt/tty.c b/prompt/tty.c
+similarity index 100%
+rename from serv/src/prompt/tty.c
+rename to prompt/tty.c
+diff --git a/serv/src/prompt/tty.h b/prompt/tty.h
+similarity index 100%
+rename from serv/src/prompt/tty.h
+rename to prompt/tty.h
+diff --git a/serv/src/prompt/tty_interface.c b/prompt/tty_interface.c
+similarity index 100%
+rename from serv/src/prompt/tty_interface.c
+rename to prompt/tty_interface.c
+diff --git a/serv/src/prompt/tty_interface.h b/prompt/tty_interface.h
+similarity index 100%
+rename from serv/src/prompt/tty_interface.h
+rename to prompt/tty_interface.h
+diff --git a/serv/resource/fs_cacheline-res2json.sh b/resource/fs_cacheline-res2json.sh
+similarity index 100%
+rename from serv/resource/fs_cacheline-res2json.sh
+rename to resource/fs_cacheline-res2json.sh
+diff --git a/serv/resource/fs_callsite-res2json.sh b/resource/fs_callsite-res2json.sh
+similarity index 100%
+rename from serv/resource/fs_callsite-res2json.sh
+rename to resource/fs_callsite-res2json.sh
+diff --git a/serv/resource/fs_obj-res2json.sh b/resource/fs_obj-res2json.sh
+similarity index 100%
+rename from serv/resource/fs_obj-res2json.sh
+rename to resource/fs_obj-res2json.sh
+diff --git a/serv/resource/fs_source-res2json.sh b/resource/fs_source-res2json.sh
+similarity index 100%
+rename from serv/resource/fs_source-res2json.sh
+rename to resource/fs_source-res2json.sh
+diff --git a/serv/resource/hit_cpu_res2json b/resource/hit_cpu_res2json
+similarity index 100%
+rename from serv/resource/hit_cpu_res2json
+rename to resource/hit_cpu_res2json
+diff --git a/serv/resource/hit_res2json b/resource/hit_res2json
+similarity index 100%
+rename from serv/resource/hit_res2json
+rename to resource/hit_res2json
+diff --git a/serv/resource/io_api_res2json b/resource/io_api_res2json
+similarity index 100%
+rename from serv/resource/io_api_res2json
+rename to resource/io_api_res2json
+diff --git a/serv/resource/io_sys_res2json b/resource/io_sys_res2json
+similarity index 100%
+rename from serv/resource/io_sys_res2json
+rename to resource/io_sys_res2json
+diff --git a/serv/resource/miss_res2json b/resource/miss_res2json
+similarity index 100%
+rename from serv/resource/miss_res2json
+rename to resource/miss_res2json
+diff --git a/serv/resource/numa_cacheline-res2json.sh b/resource/numa_cacheline-res2json.sh
+similarity index 100%
+rename from serv/resource/numa_cacheline-res2json.sh
+rename to resource/numa_cacheline-res2json.sh
+diff --git a/serv/resource/numa_callsite-res2json.sh b/resource/numa_callsite-res2json.sh
+similarity index 100%
+rename from serv/resource/numa_callsite-res2json.sh
+rename to resource/numa_callsite-res2json.sh
+diff --git a/serv/resource/numa_obj-res2json.sh b/resource/numa_obj-res2json.sh
+similarity index 100%
+rename from serv/resource/numa_obj-res2json.sh
+rename to resource/numa_obj-res2json.sh
+diff --git a/serv/resource/remotescp.sh b/resource/remotescp.sh
+similarity index 100%
+rename from serv/resource/remotescp.sh
+rename to resource/remotescp.sh
+diff --git a/serv/resource/topdown_csv2json.sh b/resource/topdown_csv2json.sh
+similarity index 100%
+rename from serv/resource/topdown_csv2json.sh
+rename to resource/topdown_csv2json.sh
+diff --git a/serv/resource/topdown_res2json.sh b/resource/topdown_res2json.sh
+similarity index 100%
+rename from serv/resource/topdown_res2json.sh
+rename to resource/topdown_res2json.sh
+diff --git a/serv/src/results.c b/results.c
+similarity index 100%
+rename from serv/src/results.c
+rename to results.c
+diff --git a/serv/src/results.h b/results.h
+similarity index 100%
+rename from serv/src/results.h
+rename to results.h
+diff --git a/serv/results/.gitkeep b/results/.gitkeep
+similarity index 100%
+rename from serv/results/.gitkeep
+rename to results/.gitkeep
+diff --git a/serv/src/rmt_exec.c b/rmt_exec.c
+similarity index 100%
+rename from serv/src/rmt_exec.c
+rename to rmt_exec.c
+diff --git a/serv/src/rmt_exec.h b/rmt_exec.h
+similarity index 100%
+rename from serv/src/rmt_exec.h
+rename to rmt_exec.h
+diff --git a/serv/src/scanner.c b/scanner.c
+similarity index 100%
+rename from serv/src/scanner.c
+rename to scanner.c
+diff --git a/serv/src/scanner.h b/scanner.h
+similarity index 100%
+rename from serv/src/scanner.h
+rename to scanner.h
+diff --git a/serv/src/server.c b/server.c
+similarity index 100%
+rename from serv/src/server.c
+rename to server.c
+diff --git a/serv/src/setproctitle.c b/setproctitle.c
+similarity index 100%
+rename from serv/src/setproctitle.c
+rename to setproctitle.c
+diff --git a/serv/src/setproctitle.h b/setproctitle.h
+similarity index 100%
+rename from serv/src/setproctitle.h
+rename to setproctitle.h
+diff --git a/serv/src/shmlst.c b/shmlst.c
+similarity index 100%
+rename from serv/src/shmlst.c
+rename to shmlst.c
+diff --git a/serv/src/shmlst.h b/shmlst.h
+similarity index 100%
+rename from serv/src/shmlst.h
+rename to shmlst.h
+diff --git a/serv/src/ssh_tst.c b/ssh_tst.c
+similarity index 100%
+rename from serv/src/ssh_tst.c
+rename to ssh_tst.c
+diff --git a/serv/src/str.c b/str.c
+similarity index 100%
+rename from serv/src/str.c
+rename to str.c
+diff --git a/serv/src/sysinc.h b/sysinc.h
+similarity index 100%
+rename from serv/src/sysinc.h
+rename to sysinc.h
+diff --git a/serv/tools/env_check/depend-check.sh b/tools/env_check/depend-check.sh
+similarity index 100%
+rename from serv/tools/env_check/depend-check.sh
+rename to tools/env_check/depend-check.sh
+diff --git a/serv/tools/env_check/env_check_all.sh b/tools/env_check/env_check_all.sh
+similarity index 100%
+rename from serv/tools/env_check/env_check_all.sh
+rename to tools/env_check/env_check_all.sh
+diff --git a/serv/tools/env_check/env_check_alls.sh b/tools/env_check/env_check_alls.sh
+similarity index 100%
+rename from serv/tools/env_check/env_check_alls.sh
+rename to tools/env_check/env_check_alls.sh
+diff --git a/serv/tools/env_check/env_check_io.sh b/tools/env_check/env_check_io.sh
+similarity index 100%
+rename from serv/tools/env_check/env_check_io.sh
+rename to tools/env_check/env_check_io.sh
+diff --git a/serv/tools/env_check/ping-check.sh b/tools/env_check/ping-check.sh
+similarity index 100%
+rename from serv/tools/env_check/ping-check.sh
+rename to tools/env_check/ping-check.sh
+diff --git a/serv/tools/env_check/pmis-check.sh b/tools/env_check/pmis-check.sh
+similarity index 100%
+rename from serv/tools/env_check/pmis-check.sh
+rename to tools/env_check/pmis-check.sh
+diff --git a/serv/tools/env_check/telnet-check.sh b/tools/env_check/telnet-check.sh
+similarity index 100%
+rename from serv/tools/env_check/telnet-check.sh
+rename to tools/env_check/telnet-check.sh
+diff --git a/serv/src/tpool.c b/tpool.c
+similarity index 100%
+rename from serv/src/tpool.c
+rename to tpool.c
+diff --git a/serv/src/tpool.h b/tpool.h
+similarity index 100%
+rename from serv/src/tpool.h
+rename to tpool.h
+diff --git a/serv/src/tty/Pty.c b/tty/Pty.c
+similarity index 100%
+rename from serv/src/tty/Pty.c
+rename to tty/Pty.c
+diff --git a/serv/src/tty/Pty.h b/tty/Pty.h
+similarity index 100%
+rename from serv/src/tty/Pty.h
+rename to tty/Pty.h
+diff --git a/serv/src/tty/Session.c b/tty/Session.c
+similarity index 100%
+rename from serv/src/tty/Session.c
+rename to tty/Session.c
+diff --git a/serv/src/tty/Session.h b/tty/Session.h
+similarity index 100%
+rename from serv/src/tty/Session.h
+rename to tty/Session.h
+diff --git a/serv/src/tty/ShellCommand.c b/tty/ShellCommand.c
+similarity index 100%
+rename from serv/src/tty/ShellCommand.c
+rename to tty/ShellCommand.c
+diff --git a/serv/src/tty/ShellCommand.h b/tty/ShellCommand.h
+similarity index 100%
+rename from serv/src/tty/ShellCommand.h
+rename to tty/ShellCommand.h
+diff --git a/serv/src/tty/konsole_wcwidth.c b/tty/konsole_wcwidth.c
+similarity index 100%
+rename from serv/src/tty/konsole_wcwidth.c
+rename to tty/konsole_wcwidth.c
+diff --git a/serv/src/tty/konsole_wcwidth.h b/tty/konsole_wcwidth.h
+similarity index 100%
+rename from serv/src/tty/konsole_wcwidth.h
+rename to tty/konsole_wcwidth.h
+diff --git a/serv/src/tty/kprocess.c b/tty/kprocess.c
+similarity index 100%
+rename from serv/src/tty/kprocess.c
+rename to tty/kprocess.c
+diff --git a/serv/src/tty/kprocess.h b/tty/kprocess.h
+similarity index 100%
+rename from serv/src/tty/kprocess.h
+rename to tty/kprocess.h
+diff --git a/serv/src/tty/kpty.c b/tty/kpty.c
+similarity index 100%
+rename from serv/src/tty/kpty.c
+rename to tty/kpty.c
+diff --git a/serv/src/tty/kpty.h b/tty/kpty.h
+similarity index 100%
+rename from serv/src/tty/kpty.h
+rename to tty/kpty.h
+diff --git a/serv/src/tty/kpty_p.h b/tty/kpty_p.h
+similarity index 100%
+rename from serv/src/tty/kpty_p.h
+rename to tty/kpty_p.h
+diff --git a/serv/src/tty/kptydevice.c b/tty/kptydevice.c
+similarity index 100%
+rename from serv/src/tty/kptydevice.c
+rename to tty/kptydevice.c
+diff --git a/serv/src/tty/kptydevice.h b/tty/kptydevice.h
+similarity index 100%
+rename from serv/src/tty/kptydevice.h
+rename to tty/kptydevice.h
+diff --git a/serv/src/tty/kptyprocess.c b/tty/kptyprocess.c
+similarity index 100%
+rename from serv/src/tty/kptyprocess.c
+rename to tty/kptyprocess.c
+diff --git a/serv/src/tty/kptyprocess.h b/tty/kptyprocess.h
+similarity index 100%
+rename from serv/src/tty/kptyprocess.h
+rename to tty/kptyprocess.h
+diff --git a/serv/src/tty/mytty.c b/tty/mytty.c
+similarity index 100%
+rename from serv/src/tty/mytty.c
+rename to tty/mytty.c
+diff --git a/serv/src/tty/nssh.c b/tty/nssh.c
+similarity index 100%
+rename from serv/src/tty/nssh.c
+rename to tty/nssh.c
+diff --git a/serv/src/tty/nssh.h b/tty/nssh.h
+similarity index 100%
+rename from serv/src/tty/nssh.h
+rename to tty/nssh.h
+diff --git a/serv/src/tty/tools.c b/tty/tools.c
+similarity index 100%
+rename from serv/src/tty/tools.c
+rename to tty/tools.c
+diff --git a/serv/src/tty/tools.h b/tty/tools.h
+similarity index 100%
+rename from serv/src/tty/tools.h
+rename to tty/tools.h
+diff --git a/serv/src/version.h b/version.h
+similarity index 100%
+rename from serv/src/version.h
+rename to version.h
+
